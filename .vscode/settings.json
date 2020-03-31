@@ -1,0 +1,9 @@
+{
+    "C_Cpp.commentContinuationPatterns": [
+        "/**"
+    ],
+    "files.associations": {
+        "complex": "cpp",
+        "iostream": "cpp"
+    }
+}
