@@ -2,42 +2,39 @@
 #define UKLADROWNANLINIOWYCH_HH
 
 #include <iostream>
+#include <fstream>
+#include "rozmiar.h"
+#include "MacierzKw.hh"
+#include "Wektor.hh"
 
 
 /*
- *  Tutaj trzeba opisac klase. Jakie pojecie modeluje ta klasa
- *  i jakie ma glowne cechy.
+ *  Klasa realizuje pojęcie układu równań liniowych złożonego z macierzy 
+ *  i wektora wyrazów wolnych
  */
 class UkladRownanLiniowych {
-  /*
-   *  Tutaj trzeba wstawic definicje odpowiednich pol i metod prywatnych
-   */
-  public:
-  /*
-   *  Tutaj trzeba wstawic definicje odpowiednich metod publicznych
-   */    
+  Wektor m_b, m_x;
+  MacierzKw m_A;
+
+public:
+  UkladRownanLiniowych() = default;
+
+  UkladRownanLiniowych(const MacierzKw M, const Wektor W);
+
+  const Wektor &PrzekazB() const;
+
+  const Wektor &PrzekazX() const;
+
+  const MacierzKw &PrzekazA() const;
+
+  void Oblicz();
+
+  const Wektor WektorBledu() const;
 };
 
+std::istream &operator>>(std::istream &strm, UkladRownanLiniowych &UklRown);
 
-/*
- * To przeciazenie trzeba opisac. Co ono robi. Jaki format
- * danych akceptuje. Jakie jest znaczenie parametrow itd.
- * Szczegoly dotyczace zalecen realizacji opisow mozna
- * znalezc w pliku:
- *    ~bk/edu/kpo/zalecenia.txt 
- */
-std::istream& operator >> (std::istream &Strm, UkladRownanLiniowych &UklRown);
-
-/*
- * To przeciazenie trzeba opisac. Co ono robi. Jaki format
- * danych akceptuje. Jakie jest znaczenie parametrow itd.
- * Szczegoly dotyczace zalecen realizacji opisow mozna
- * znalezc w pliku:
- *    ~bk/edu/kpo/zalecenia.txt 
- */
-std::ostream& operator << ( std::ostream                  &Strm, 
-                            const UkladRownanLiniowych    &UklRown
-                          );
+std::ostream &operator<<(std::ostream &strm, const UkladRownanLiniowych &UklRown);
 
 
 #endif

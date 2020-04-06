@@ -1,32 +1,53 @@
 #include <iostream>
+#include <iomanip>
+#include "rozmiar.h"
 #include "Wektor.hh"
-#include "Macierz.hh"
+#include "MacierzKw.hh"
 #include "UkladRownanLiniowych.hh"
 
+using std::cerr;
 using std::cin;
 using std::cout;
 using std::endl;
-
-/*
- * Tu definiujemy pozostale funkcje.
- * Lepiej jednak stworzyc dodatkowy modul
- * i tam je umiescic. Ten przyklad pokazuje
- * jedynie absolutne minimum.
- */
-
+using std::setw;
 
 int main()
 {
-  //UkladRownanLiniowych UklRown;   // To tylko przykladowe definicje zmiennej
-  double tab1[] = {1, 0, 0};
-  double tab2[] = {0, 1, 0};
-  double tab3[] = {0, 0, 1};
-  Wektor w1(tab1);
-  Wektor w2(tab2);
-  Wektor w3(tab3);
-  Wektor suma;
-  suma = w1 + w2 + w3;
+  UkladRownanLiniowych UklRow;
+  Wektor Blad;
 
   cout << endl << " Start programu " << endl << endl;
-  
+  cin >> UklRow;
+  while (!cin.good()){
+    cin.clear();
+    cin.ignore(1000, '\n');
+    cout << ":/ Błąd zapisu układu równań. Spróbuj jeszcze raz:" << endl;
+    cin >> UklRow;
+  }
+  cout << std::setprecision(4) << std::left;
+  cout << "Macierz A^T:" << endl << UklRow.PrzekazA() << endl << endl;
+  cout << "Wektor wyrazów wolnych b:" << endl << UklRow.PrzekazB() << endl << endl;
+
+  try{
+    UklRow.Oblicz();
+  }
+  catch (const char * error){
+    cout << error << endl;
+    cout << "Program kończy działanie." << endl;
+    return 0;
+  }
+  catch(std::string error){
+     cerr << "Błąd wewnętrzny: " << error << endl;
+     return -1;
+  }
+
+  cout << "Rozwiązanie: " << endl << UklRow << endl;
+
+  Blad = UklRow.WektorBledu();
+
+  cout << std::scientific << std::setprecision(2);
+  cout << "Wektor błędu: " << endl << Blad << endl;
+  cout << "Długość wektora błędu: " << Blad.dlugosc() << endl;
+
+  return 0;
 }

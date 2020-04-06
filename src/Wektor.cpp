@@ -1,21 +1,18 @@
 #include <stdio.h>
 #include <math.h>
+#include <iomanip>
 #include "Wektor.hh"
 
-using std::cin;
-using std::cout;
-using std::endl;
-
 /*
- * Konstruktor domyślny zerujący pola klasy.
+ * Konstruktor domyślny zerujący wektor
  */
 Wektor::Wektor(){
     for (int i = 0; i < ROZMIAR; i++)
-        this->m_tab[i] = 0;
+        (*this)[i] = 0;
 }
 
 /*
- *  Konstruktor inicjujacy pola klasy przesłaną tablicą
+ *  Konstruktor inicjujacy wektor
  * 
  *  Parametry:
  *      tablica - kolejne współrzędne tworzace wektor
@@ -24,7 +21,18 @@ Wektor::Wektor(){
  */
 Wektor::Wektor(double tablica[]){
     for (int i = 0; i < ROZMIAR; i++)
-        this->m_tab[i] = tablica[i];
+        (*this)[i] = tablica[i];
+}
+
+/*
+ *  Przypisanie do elementów wektora tych samych wartości
+ */
+const Wektor &Wektor::operator=(double l)
+{
+    for (int i = 0; i < ROZMIAR; i++)
+        (*this)[i] = l;
+        
+    return (*this);
 }
 
 /*
@@ -36,8 +44,9 @@ Wektor::Wektor(double tablica[]){
 const Wektor Wektor::operator+(const Wektor &W2) const
 {
     Wektor Suma;
+
     for (int i = 0; i < ROZMIAR; i++)
-        Suma.m_tab[i] = this->m_tab[i] + W2.m_tab[i];
+        Suma[i] = (*this)[i] + W2[i];
 
     return Suma;
 }
@@ -52,7 +61,7 @@ const Wektor Wektor::operator-(const Wektor &W2) const
 {
     Wektor Roznica;
     for (int i = 0; i < ROZMIAR; i++)
-        Roznica.m_tab[i] = this->m_tab[i] - W2.m_tab[i];
+        Roznica[i] = (*this)[i] - W2[i];
 
     return Roznica;
 }
@@ -68,7 +77,7 @@ double Wektor::operator*(const Wektor &W2) const
     double iloczyn = 0;
 
     for (int i = 0; i < ROZMIAR; i++)
-        iloczyn += this->m_tab[i] * W2.m_tab[i];
+        iloczyn += (*this)[i] * W2[i];
 
     return iloczyn;
 }
@@ -84,7 +93,7 @@ const Wektor Wektor::operator*(double l) const
     Wektor Iloczyn;
 
     for (int i = 0; i < ROZMIAR; i++)
-        Iloczyn.m_tab[i] = this->m_tab[i] * l;
+        Iloczyn[i] = (*this)[i] * l;
 
     return Iloczyn;
 }
@@ -95,16 +104,20 @@ const Wektor Wektor::operator*(double l) const
  * 
  *  Zwraca:
  *      iloraz wektora i skalara będący wektorem
+ * 
+ *  Wyjątek:
+ *      (std::string) - próba dzielenia przez 0
  */
-const Wektor Wektor::operator*(double l) const
+const Wektor Wektor::operator/(double l) const
 {
     Wektor Iloraz;
-    if(l == 0)
-        throw("Próba dzielenia przez 0");
-    ;
+    if (l == 0){
+        std::string e = "Próba dzielenia przez 0";
+        throw(e);
+    }
 
     for (int i = 0; i < ROZMIAR; i++)
-        Iloraz.m_tab[i] = this->m_tab[i] / l;
+        Iloraz[i] = (*this)[i] / l;
 
     return Iloraz;
 }
@@ -117,7 +130,7 @@ const Wektor Wektor::operator*(double l) const
  */
 Wektor & Wektor::operator+=(const Wektor &W2){
     for (int i = 0; i < ROZMIAR; i++)
-        this->m_tab[i] += W2.m_tab[i];
+        (*this)[i] += W2[i];
 
     return *this;
 }
@@ -128,10 +141,10 @@ Wektor & Wektor::operator+=(const Wektor &W2){
  *  Zwraca:
  *      referencje do zmienionego wektora 
  */
-Wektor &Wektor::operator+=(const Wektor &W2)
+Wektor &Wektor::operator-=(const Wektor &W2)
 {
     for (int i = 0; i < ROZMIAR; i++)
-        this->m_tab[i] -= W2.m_tab[i];
+        (*this)[i] -= W2[i];
 
     return *this;
 }
@@ -146,7 +159,7 @@ Wektor &Wektor::operator+=(const Wektor &W2)
 bool Wektor::operator==(const Wektor &W2)
 {
     for (int i = 0; i < ROZMIAR; i++){
-        if(this->m_tab[i] != W2.m_tab[i])
+        if((*this)[i] != W2[i])
             return false;
     }
 
@@ -160,34 +173,44 @@ bool Wektor::operator==(const Wektor &W2)
  *      true jeżeli nie są równe
  *      false w przeciwnym wypadku 
  */
-bool Wektor::operator==(const Wektor &W2)
+bool Wektor::operator!=(const Wektor &W2)
 {
     return !(*this == W2);
 }
 
 /*
- *  Odczytuje element wektora
+ *  Wartość elementu wektora
  *  W przypadku próby odniesienia się do nieistniejącego elementu rzuca wyjątek
  * 
  *  Zwraca:
  *      wartość z wektora o wybranym indeksie
+ * 
+ *  Wyjątek:
+ *      (std::string) - próba dostępu poza tablice
  */
-const double &Wektor::operator[](int index) const{
-    if(index < 0 || index >= ROZMIAR)
-        throw("Błędny indeks");
+const double Wektor::operator[](int index) const{
+    if(index < 0 || index >= ROZMIAR){
+        std::string e = "Błędny indeks: " + std::to_string(index);
+        throw(e);
+    }
     return this->m_tab[index];
 }
 
 /*
- *  Przypisuje wartość elementowi wektora
+ *  Referencja do elementu wektora
  *  W przypadku próby odniesienia się do nieistniejącego elementu rzuca wyjątek
  * 
  *  Zwraca:
- *      wartość z wektora o wybranym indeksie
+ *      referencje do wartości z wektora o wybranym indeksie
+ * 
+ *  Wyjątek:
+ *      (std::string) - próba dostępu poza tablice
  */
 double &Wektor::operator[](int index){
-    if (index < 0 || index >= ROZMIAR)
-        throw("Błędny indeks");
+    if (index < 0 || index >= ROZMIAR){
+        std::string e = "Błędny indeks: " + std::to_string(index);
+        throw(e);
+    }
     return this->m_tab[index];
 }
 
@@ -201,6 +224,62 @@ double Wektor::dlugosc() const{
     double dl = 0;
 
     for (int i = 0; i < ROZMIAR; i++)
-        dl += pow(this->m_tab[i], 2);
+        dl += pow((*this)[i], 2);
     return sqrt(dl);
+}
+
+/*
+ *  Realizuje iloczyn skalarem z wektora
+ * 
+ *  Zwraca:
+ *      iloczyn skalara i wektora będący wektorem
+ */
+const Wektor operator*(double l, const Wektor &W2){
+    Wektor Iloczyn;
+
+    for (int i = 0; i < ROZMIAR; i++)
+        Iloczyn[i] = W2[i] * l;
+
+    return Iloczyn;
+}
+
+/*
+ *  Realizuje zmiane znaków elementów wektora
+ * 
+ *  Zwraca:
+ *      wektor, ktorego elementy mają przeciwne znaki
+ */
+const Wektor operator-(const Wektor &W2){
+    Wektor Zmiana;
+
+    for (int i = 0; i < ROZMIAR; i++)
+        Zmiana[i] = -W2[i];
+
+    return Zmiana;
+}
+
+/*
+ *  Wczytuje wszystkie współżędne wektora
+ * 
+ *  Zwraca:
+ *      strumień wejściowy jako referencje
+ */
+std::istream &operator>>(std::istream &strm, Wektor &W){
+    for (int i = 0; i < ROZMIAR; i++)
+        strm >> W[i];
+
+    return strm;
+}
+
+/*
+ *  Wypisuje wszystkie współżędne wektora
+ * 
+ *  Zwraca:
+ *      strumień wyjściowy jako referencje
+ */
+std::ostream &operator<<(std::ostream &strm, const Wektor &W){
+    for (int i = 0; i < ROZMIAR; i++)
+        strm << std::setw(3) << W[i] << " ";
+
+    return strm;
 }

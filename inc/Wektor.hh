@@ -5,7 +5,7 @@
 #include <iostream>
 
 /*
- *  Klasa modeluje pojęcie wektora stałym rozmiarze
+ *  Klasa modeluje pojęcie wektora o stałym rozmiarze
  */
 class Wektor 
 {
@@ -14,17 +14,21 @@ private:
   double m_tab[ROZMIAR]; // tablica współżędnych wektora
 
 public:
-  
 
 /*
- *  Konstruktor domyślny
+ *  Konstruktor domyślny zerujący wektor.
  */
   Wektor();
 
 /*
- *  Konstruktor inicjujacy pola klasy przesłaną tablicą
+ *  Konstruktor inicjujacy wektor
  */
   Wektor(double tablica[]);
+
+/*
+ *  Przypisanie do elementów wektora tych samych wartości
+ */
+  const Wektor & operator=(double l);
 
 /*
  *  Realizacja sumy dwóch wektorów
@@ -40,6 +44,7 @@ public:
  *  Realizuje iloczyn skalarny dwóch wektorów
  */
   double operator*(const Wektor &W2) const;
+
 /*
  *  Realizuje iloczyn wektora ze skalarem
  */
@@ -71,12 +76,12 @@ public:
   bool operator!=(const Wektor &W2);
 
 /*
- *  Odczytuje i zwraca element wektora
+ *  Wartość elementu wektora
  */
-  const double &operator[](int index) const;
+  const double operator[](int index) const;
 
 /*
- *  Odczytuje i zwraca referencje do elementu wektora
+ *  Referencja do elementu wektora
  */
   double &operator[](int index);
 
@@ -86,9 +91,24 @@ public:
   double dlugosc() const;
 };
 
-const Wektor operator*(double l, Wektor &W2);
-std::istream &operator>>(std::istream &Strm, Wektor &W);
-std::ostream &operator<<(std::ostream &Strm, const Wektor &W);
+/*
+ *  Realizuje iloczyn skalara z wektora
+ */
+const Wektor operator*(double l, const Wektor &W2);
 
+/*
+ *  Realizuje zmiane znaków elementów wektora
+ */
+const Wektor operator-(const Wektor &W2);
+
+/*
+ *  Wczytuje wszystkie współżędne wektora
+ */
+std::istream &operator>>(std::istream &strm, Wektor &W);
+
+/*
+ *  Wypisuje wszystkie współżędne wektora
+ */
+std::ostream &operator<<(std::ostream &strm, const Wektor &W);
 
 #endif
