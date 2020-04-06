@@ -159,7 +159,7 @@ Wektor &Wektor::operator-=(const Wektor &W2)
 bool Wektor::operator==(const Wektor &W2)
 {
     for (int i = 0; i < ROZMIAR; i++){
-        if((*this)[i] != W2[i])
+        if(abs((*this)[i] - W2[i]) > 0.00001)
             return false;
     }
 
