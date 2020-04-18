@@ -2,24 +2,15 @@
 #include "Wektor.hh"
 #include <iostream>
 #include <math.h>
-#include <iomanip>
 
-/*
- * Konstruktor inicjujący macierz tablicą wektorów
- */
 MacierzKw::MacierzKw(const Wektor macierz[])
 {
     for (int i = 0; i < ROZMIAR; i++)
         (*this)[i] = macierz[i];
 }
 
-/*
- *  Realizuje dodawania dwóch macierzy kwadratowych
- * 
- *  Zwraca:
- *      sume dwóch macierzy będącą macierzą
- */
-const MacierzKw MacierzKw::operator+(const MacierzKw &M2) const{
+MacierzKw MacierzKw::operator+(const MacierzKw &M2) const
+{
     MacierzKw Suma;
 
     for (int i = 0; i < ROZMIAR; i++)
@@ -28,13 +19,8 @@ const MacierzKw MacierzKw::operator+(const MacierzKw &M2) const{
     return Suma;
 }
 
-/*
- *  Realizuje odejmowanie dwóch macierzy kwadratowych
- * 
- *  Zwraca:
- *      różnicę dwóch macierzy będącą macierzą
- */
-const MacierzKw MacierzKw::operator-(const MacierzKw &M2) const{
+MacierzKw MacierzKw::operator-(const MacierzKw &M2) const
+{
     MacierzKw Roznica;
 
     for (int i = 0; i < ROZMIAR; i++)
@@ -43,14 +29,7 @@ const MacierzKw MacierzKw::operator-(const MacierzKw &M2) const{
     return Roznica;
 }
 
-/*
- *  Realizuje mnożenie dwóch macierzy kwadratowych 
- *  metodą współczynniki - wektory 
- * 
- *  Zwraca:
- *      iloczyn dwóch macierzy będący macierzą
- */
-const MacierzKw MacierzKw::operator*(const MacierzKw &M2) const
+MacierzKw MacierzKw::operator*(const MacierzKw &M2) const
 {
     MacierzKw Iloczyn;
 
@@ -61,13 +40,7 @@ const MacierzKw MacierzKw::operator*(const MacierzKw &M2) const
     return Iloczyn;
 }
 
-/*
- *  Realizuje mnożenie macierzy kwadratowej i skalara
- * 
- *  Zwraca:
- *      iloczyn macierzy i skalara będący macierzą
- */
-const MacierzKw MacierzKw::operator*(double l) const
+MacierzKw MacierzKw::operator*(double l) const
 {
     MacierzKw Iloczyn;
 
@@ -77,13 +50,8 @@ const MacierzKw MacierzKw::operator*(double l) const
     return Iloczyn;
 }
 
-/*
- *  Realizuje mnożenie macierzy kwadratowej i wektora
- * 
- *  Zwraca:
- *      iloczyn macierzy i wektora będący wektorem
- */
-const Wektor MacierzKw::operator*(const Wektor &W2) const
+
+Wektor MacierzKw::operator*(const Wektor &W2) const
 {
     Wektor Iloczyn;
 
@@ -94,23 +62,12 @@ const Wektor MacierzKw::operator*(const Wektor &W2) const
     return Iloczyn;
 }
 
-/*
- *  Realizuje dzielenie macierzy kwadratowej przez skalar
- * 
- *  Zwraca:
- *      iloraz macierzy i skalara będący macierzą
- * 
- *  Wyjątek:
- *      (std::string) - próba dzielenia przez 0
- */
-const MacierzKw MacierzKw::operator/(double l) const
+MacierzKw MacierzKw::operator/(double l) const
 {
     MacierzKw Iloraz;
 
-    if (l == 0){
-        std::string e = "Próba dzielenia przez 0";
-        throw(e);
-    }
+    if (l == 0)
+        throw(std::invalid_argument("Próba dzielenia przez 0"));
 
     for (int i = 0; i < ROZMIAR; i++)
         Iloraz[i] = (*this)[i] / l;
@@ -118,51 +75,24 @@ const MacierzKw MacierzKw::operator/(double l) const
     return Iloraz;
 }
 
-/*
- *  R-wartość elementu macierzy
- * 
- *  Zwraca:
- *      referencję do wektora z macierzy
- * 
- *  Wyjątek:
- *      (std::string) - próba dostępu poza tablice
-*/
 const Wektor &MacierzKw::operator[](int index) const 
 {
-    if (index < 0 || index >= ROZMIAR){
-        std::string e = "Błędny indeks: " + std::to_string(index);
-        throw(e);
-    }
+    if (index < 0 || index >= ROZMIAR)
+        throw(std::out_of_range("Próba dostępu poza indeks tablicy (" + std::to_string(index) + ')'));
 
     return this->m_macierz[index];
 }
 
-/*
- *  L-wartość elementu macierzy
- * 
- *  Zwraca:
- *      referencję do wektora z macierzy
- * 
- *  Wyjątek:
- *      (std::string) - próba dostępu poza tablice
-*/
 Wektor &MacierzKw::operator[](int index)
 {
-    if (index < 0 || index >= ROZMIAR){
-        std::string e = "Błędny indeks: " + std::to_string(index);
-        throw(e);
-    }
+    if (index < 0 || index >= ROZMIAR)
+        throw(std::out_of_range("Próba dostępu poza indeks tablicy (" + std::to_string(index) + ')'));
 
     return this->m_macierz[index];
 }
 
-/*
- *   Transponowanie macierzy kwadratowej
- * 
- *   Zwraca:
- *      referencje na przetransponowaną macierz wejściową
-*/
-const MacierzKw &MacierzKw::transponuj(){
+const MacierzKw &MacierzKw::transponuj()
+{
     MacierzKw Temp = (*this);
 
     for (int i = 0; i < ROZMIAR; i++)
@@ -172,58 +102,38 @@ const MacierzKw &MacierzKw::transponuj(){
     return (*this);
 }
 
-/*
- *  Wyznacznik macierzy kwadratowej obliczany metodą Gaussa
- * 
- *  Zwraca:
- *      wyznacznik macierzy
- * 
- *   Wyjątek:
- *      (const * char) - macierz jest osobliwa
-*/
 double MacierzKw::wyznacznik() const
 {
     int i, j;
     MacierzKw Wyz = (*this);
-    double mnoznik, temp = 1;
+    double temp = 1;
 
     for (i = 0; i < ROZMIAR; i++){ //petla kolejnych elementów z przekątnej
-    if(Wyz[i][i] == 0){    //jeśli na przekątnej jest 0, wybierz wiersz do zamiany
-        j = i;
-        while (Wyz[j][i] == 0){
-            if (++j == ROZMIAR)
-                throw("Macierz jest osobliwa.");
+        if(Wyz[i][i] == 0){    //jeśli na przekątnej jest 0, wybierz wiersz do zamiany
+            j = i;
+            while (Wyz[j][i] == 0){
+                if (++j == ROZMIAR)
+                    return 0; //macierz jest osobliwa
+            }
+            Wyz[i] = Wyz[j];
+            Wyz[j] = -(*this)[i];
         }
-        Wyz[i] = Wyz[j];
-        Wyz[j] = -(*this)[i];
-    }
-    
-    for (j = i + 1; j < ROZMIAR; j++){  //petla zerowania kolejnych kolumn
-        mnoznik = -Wyz[j][i] / Wyz[i][i];
-        Wyz[j] += mnoznik * Wyz[i];
-        if(Wyz[j].dlugosc() == 0)
-            return 0;
-    }
-    temp *= Wyz[i][i];
+        
+        for (j = i + 1; j < ROZMIAR; j++){  //petla zerowania kolejnych kolumn
+            Wyz[j] += (-Wyz[j][i] / Wyz[i][i]) * Wyz[i];
+            if(Wyz[j].dlugosc() == 0)
+                return 0;
+        }
+        temp *= Wyz[i][i];
     }
     return temp;
  }
 
- /*
- *   Odwracanie macierzy kwadratowej metodą Gaussa-Jordana
- * 
- *   Zwraca:
- *      referencje do odwroconej macierzy wejsciowej
- * 
- *   Wyjątek:
- *      (const * char) - macierz jest osobliwa
-*/
  const MacierzKw &MacierzKw::odwroc()
  {
      int i, j;
      double mnoznik;
      MacierzKw OdwA, A = (*this);
-     Wektor Temp;
 
      for (i = 0; i < ROZMIAR; i++)
      {
@@ -231,20 +141,17 @@ double MacierzKw::wyznacznik() const
      }
 
      for (i = 0; i < ROZMIAR; i++)
-     { //petla dla dolnej części przekątnej
+     { //petla dla części pod przekątną
          if (A[i][i] == 0)
          { //jeśli na przekątnej jest 0, wybierz wiersz do zamiany
              j = i;
              while (A[j][i] == 0)
              {
                  if (++j == ROZMIAR)
-                     throw("Macierz jest osobliwa.");
+                     throw(std::runtime_error("Macierz jest osobliwa."));
              }
-             A[i] = A[j];
-             A[j] = (*this)[i];
-             Temp = OdwA[i];
-             OdwA[i] = OdwA[j];
-             OdwA[j] = Temp;
+             std::swap(A[i], A[j]);
+             std::swap(OdwA[i], OdwA[j]);
          }
 
          OdwA[i] = OdwA[i] / A[i][i];
@@ -259,7 +166,7 @@ double MacierzKw::wyznacznik() const
      }
 
      for (i = ROZMIAR - 1; i > 0; i--)
-     { //petla dla górnej części przekątnej
+     { //petla dla części nad przekątną
          for (j = i - 1; j >= 0; j--)
          { //petla zerowania kolejnych kolumn
              OdwA[j] -= A[j][i] * OdwA[i];
@@ -271,17 +178,22 @@ double MacierzKw::wyznacznik() const
      return (*this);
 }
 
-std::ostream &operator<<(std::ostream &strm, const MacierzKw &M){
+MacierzKw operator*(double l, const MacierzKw &M2){
+    return M2 * l;
+}
 
+std::istream &operator>>(std::istream &strm, MacierzKw &M)
+{
     for (int i = 0; i < ROZMIAR; i++)
-        strm << M[i] << std::endl;
+        strm >> M[i];
 
     return strm;
 }
 
-std::istream &operator>>(std::istream &strm, MacierzKw &M){
+std::ostream &operator<<(std::ostream &strm, const MacierzKw &M){
+
     for (int i = 0; i < ROZMIAR; i++)
-        strm >> M[i];
+        strm << M[i] << std::endl;
 
     return strm;
 }

@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Zadanie Równania Liniowe: Plik źródłowy inc/Wektor.hh</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Zadanie Równania Liniowe
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Wektor.hh</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="Wektor_8hh.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef WEKTOR_HH</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define WEKTOR_HH</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="rozmiar_8h.html">rozmiar.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classWektor.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classWektor.html">Wektor</a> </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classWektor.html#a567b90e41e7f153df5524f503414b769">   15</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="classWektor.html#a567b90e41e7f153df5524f503414b769">m_tab</a>[<a class="code" href="rozmiar_8h.html#aa50aa866c5823769bb02e986d29a0589">ROZMIAR</a>]; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <a class="code" href="classWektor.html#a5f36a42b5c2ca9022aa8eff5121897a6">Wektor</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <a class="code" href="classWektor.html#a5f36a42b5c2ca9022aa8eff5121897a6">Wektor</a>(<span class="keywordtype">double</span> tablica[]);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="classWektor.html">Wektor</a> <a class="code" href="classWektor.html#a110418be0cac837302aa70bffa77eda2">operator+</a>(<span class="keyword">const</span> <a class="code" href="classWektor.html">Wektor</a> &amp;W2) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="classWektor.html">Wektor</a> <a class="code" href="classWektor.html#ae72fe2dba7adae896cefd2016dd19ba8">operator-</a>(<span class="keyword">const</span> <a class="code" href="classWektor.html">Wektor</a> &amp;W2) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordtype">double</span> <a class="code" href="classWektor.html#a1cea1e051bb6eb801d56c7dfa2823065">operator*</a>(<span class="keyword">const</span> <a class="code" href="classWektor.html">Wektor</a> &amp;W2) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="classWektor.html">Wektor</a> <a class="code" href="classWektor.html#a1cea1e051bb6eb801d56c7dfa2823065">operator*</a>(<span class="keywordtype">double</span> l) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <a class="code" href="classWektor.html">Wektor</a> <a class="code" href="classWektor.html#a57edf7fd2948474394825c5bb3d7cf23">operator/</a>(<span class="keywordtype">double</span> l) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keyword">const</span> <a class="code" href="classWektor.html">Wektor</a> &amp;<a class="code" href="classWektor.html#aea7102d6504d10286a213ed6002d17a4">operator+=</a>(<span class="keyword">const</span> <a class="code" href="classWektor.html">Wektor</a> &amp;W2);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keyword">const</span> <a class="code" href="classWektor.html">Wektor</a> &amp;<a class="code" href="classWektor.html#a447c43c4fbbbf9d294c75aaad0846f61">operator-=</a>(<span class="keyword">const</span> <a class="code" href="classWektor.html">Wektor</a> &amp;W2);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classWektor.html#a7ca6d9ff006ae4c9e6b3268947d9556d">operator==</a>(<span class="keyword">const</span> <a class="code" href="classWektor.html">Wektor</a> &amp;W2) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classWektor.html#af8f90ee8ee741743f2becfb2366fa877">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classWektor.html">Wektor</a> &amp;W2) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordtype">double</span> <a class="code" href="classWektor.html#a116853cb90cf15e2623f3fd0ea8e651a">operator[]</a>(<span class="keywordtype">int</span> index) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keywordtype">double</span> &amp;<a class="code" href="classWektor.html#a116853cb90cf15e2623f3fd0ea8e651a">operator[]</a>(<span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keywordtype">double</span> <a class="code" href="classWektor.html#a5c06f5a2c2748aa85888b7ea3e3e66d9">dlugosc</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;};</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<a class="code" href="classWektor.html">Wektor</a> <a class="code" href="Wektor_8hh.html#a68bcfd1ed679c9004d4f312d94c34e8c">operator*</a>(<span class="keywordtype">double</span> l, <span class="keyword">const</span> <a class="code" href="classWektor.html">Wektor</a> &amp;W2);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<a class="code" href="classWektor.html">Wektor</a> <a class="code" href="Wektor_8hh.html#a882bae0744bab5c4e4aea6cfd1e40c9d">operator-</a>(<span class="keyword">const</span> <a class="code" href="classWektor.html">Wektor</a> &amp;W2);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;std::istream &amp;<a class="code" href="Wektor_8hh.html#a0e3fe309b831c20d27294e266f97e8d4">operator&gt;&gt;</a>(std::istream &amp;strm, <a class="code" href="classWektor.html">Wektor</a> &amp;W);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;std::ostream &amp;<a class="code" href="Wektor_8hh.html#a3e5532a46611f000a34a29cadee1fc6d">operator&lt;&lt;</a>(std::ostream &amp;strm, <span class="keyword">const</span> <a class="code" href="classWektor.html">Wektor</a> &amp;W);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassWektor_html_ae72fe2dba7adae896cefd2016dd19ba8"><div class="ttname"><a href="classWektor.html#ae72fe2dba7adae896cefd2016dd19ba8">Wektor::operator-</a></div><div class="ttdeci">Wektor operator-(const Wektor &amp;W2) const</div><div class="ttdoc">Odejmowanie dwóch wektorów.</div><div class="ttdef"><b>Definition:</b> Wektor.cpp:28</div></div>
+<div class="ttc" id="aWektor_8hh_html_a882bae0744bab5c4e4aea6cfd1e40c9d"><div class="ttname"><a href="Wektor_8hh.html#a882bae0744bab5c4e4aea6cfd1e40c9d">operator-</a></div><div class="ttdeci">Wektor operator-(const Wektor &amp;W2)</div><div class="ttdoc">Zmiana znaków elementów wektora na przeciwne.</div><div class="ttdef"><b>Definition:</b> Wektor.cpp:128</div></div>
+<div class="ttc" id="aclassWektor_html_a5c06f5a2c2748aa85888b7ea3e3e66d9"><div class="ttname"><a href="classWektor.html#a5c06f5a2c2748aa85888b7ea3e3e66d9">Wektor::dlugosc</a></div><div class="ttdeci">double dlugosc() const</div><div class="ttdoc">Oblicza długość wektora.</div><div class="ttdef"><b>Definition:</b> Wektor.cpp:116</div></div>
+<div class="ttc" id="aWektor_8hh_html_a3e5532a46611f000a34a29cadee1fc6d"><div class="ttname"><a href="Wektor_8hh.html#a3e5532a46611f000a34a29cadee1fc6d">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;strm, const Wektor &amp;W)</div><div class="ttdoc">Wypisanie wartości z wektora.</div><div class="ttdef"><b>Definition:</b> Wektor.cpp:144</div></div>
+<div class="ttc" id="aclassWektor_html_aea7102d6504d10286a213ed6002d17a4"><div class="ttname"><a href="classWektor.html#aea7102d6504d10286a213ed6002d17a4">Wektor::operator+=</a></div><div class="ttdeci">const Wektor &amp; operator+=(const Wektor &amp;W2)</div><div class="ttdoc">Suma z przypisaniem dla dwóch wektorów.</div><div class="ttdef"><b>Definition:</b> Wektor.cpp:70</div></div>
+<div class="ttc" id="aclassWektor_html_a57edf7fd2948474394825c5bb3d7cf23"><div class="ttname"><a href="classWektor.html#a57edf7fd2948474394825c5bb3d7cf23">Wektor::operator/</a></div><div class="ttdeci">Wektor operator/(double l) const</div><div class="ttdoc">Iloraz wektora i skalara.</div><div class="ttdef"><b>Definition:</b> Wektor.cpp:57</div></div>
+<div class="ttc" id="aclassWektor_html_a5f36a42b5c2ca9022aa8eff5121897a6"><div class="ttname"><a href="classWektor.html#a5f36a42b5c2ca9022aa8eff5121897a6">Wektor::Wektor</a></div><div class="ttdeci">Wektor()</div><div class="ttdoc">Konstruktor nowego obiektu Wektor.</div><div class="ttdef"><b>Definition:</b> Wektor.cpp:6</div></div>
+<div class="ttc" id="aclassWektor_html"><div class="ttname"><a href="classWektor.html">Wektor</a></div><div class="ttdoc">Klasa modeluje pojęcie wektora o stałym rozmiarze.</div><div class="ttdef"><b>Definition:</b> Wektor.hh:11</div></div>
+<div class="ttc" id="aclassWektor_html_a567b90e41e7f153df5524f503414b769"><div class="ttname"><a href="classWektor.html#a567b90e41e7f153df5524f503414b769">Wektor::m_tab</a></div><div class="ttdeci">double m_tab[ROZMIAR]</div><div class="ttdoc">Tablica współżędnych wektora.</div><div class="ttdef"><b>Definition:</b> Wektor.hh:15</div></div>
+<div class="ttc" id="aclassWektor_html_a447c43c4fbbbf9d294c75aaad0846f61"><div class="ttname"><a href="classWektor.html#a447c43c4fbbbf9d294c75aaad0846f61">Wektor::operator-=</a></div><div class="ttdeci">const Wektor &amp; operator-=(const Wektor &amp;W2)</div><div class="ttdoc">Różnica z przypisaniem dla dwóch wektorów.</div><div class="ttdef"><b>Definition:</b> Wektor.cpp:77</div></div>
+<div class="ttc" id="aclassWektor_html_a1cea1e051bb6eb801d56c7dfa2823065"><div class="ttname"><a href="classWektor.html#a1cea1e051bb6eb801d56c7dfa2823065">Wektor::operator*</a></div><div class="ttdeci">double operator*(const Wektor &amp;W2) const</div><div class="ttdoc">Iloczyn skalarny dwóch wektorów.</div><div class="ttdef"><b>Definition:</b> Wektor.cpp:37</div></div>
+<div class="ttc" id="aclassWektor_html_a7ca6d9ff006ae4c9e6b3268947d9556d"><div class="ttname"><a href="classWektor.html#a7ca6d9ff006ae4c9e6b3268947d9556d">Wektor::operator==</a></div><div class="ttdeci">bool operator==(const Wektor &amp;W2) const</div><div class="ttdoc">Porównanie dwóch wektorów.</div><div class="ttdef"><b>Definition:</b> Wektor.cpp:85</div></div>
+<div class="ttc" id="aWektor_8hh_html_a0e3fe309b831c20d27294e266f97e8d4"><div class="ttname"><a href="Wektor_8hh.html#a0e3fe309b831c20d27294e266f97e8d4">operator&gt;&gt;</a></div><div class="ttdeci">std::istream &amp; operator&gt;&gt;(std::istream &amp;strm, Wektor &amp;W)</div><div class="ttdoc">Wczytanie wartości do wektora.</div><div class="ttdef"><b>Definition:</b> Wektor.cpp:137</div></div>
+<div class="ttc" id="aclassWektor_html_af8f90ee8ee741743f2becfb2366fa877"><div class="ttname"><a href="classWektor.html#af8f90ee8ee741743f2becfb2366fa877">Wektor::operator!=</a></div><div class="ttdeci">bool operator!=(const Wektor &amp;W2) const</div><div class="ttdoc">Porównanie dwóch wektorów.</div><div class="ttdef"><b>Definition:</b> Wektor.cpp:95</div></div>
+<div class="ttc" id="aWektor_8hh_html_a68bcfd1ed679c9004d4f312d94c34e8c"><div class="ttname"><a href="Wektor_8hh.html#a68bcfd1ed679c9004d4f312d94c34e8c">operator*</a></div><div class="ttdeci">Wektor operator*(double l, const Wektor &amp;W2)</div><div class="ttdoc">Iloczyn skalara i wektora.</div><div class="ttdef"><b>Definition:</b> Wektor.cpp:124</div></div>
+<div class="ttc" id="arozmiar_8h_html_aa50aa866c5823769bb02e986d29a0589"><div class="ttname"><a href="rozmiar_8h.html#aa50aa866c5823769bb02e986d29a0589">ROZMIAR</a></div><div class="ttdeci">#define ROZMIAR</div><div class="ttdef"><b>Definition:</b> rozmiar.h:12</div></div>
+<div class="ttc" id="arozmiar_8h_html"><div class="ttname"><a href="rozmiar_8h.html">rozmiar.h</a></div></div>
+<div class="ttc" id="aclassWektor_html_a110418be0cac837302aa70bffa77eda2"><div class="ttname"><a href="classWektor.html#a110418be0cac837302aa70bffa77eda2">Wektor::operator+</a></div><div class="ttdeci">Wektor operator+(const Wektor &amp;W2) const</div><div class="ttdoc">Dodawania dwóch wektorów.</div><div class="ttdef"><b>Definition:</b> Wektor.cpp:18</div></div>
+<div class="ttc" id="aclassWektor_html_a116853cb90cf15e2623f3fd0ea8e651a"><div class="ttname"><a href="classWektor.html#a116853cb90cf15e2623f3fd0ea8e651a">Wektor::operator[]</a></div><div class="ttdeci">double operator[](int index) const</div><div class="ttdoc">Dostęp do elementu tablicy w celu odczytu.</div><div class="ttdef"><b>Definition:</b> Wektor.cpp:100</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>
